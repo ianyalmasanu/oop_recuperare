@@ -1,0 +1,66 @@
+func_1(int x){  <-- transmitere parametri prin valoare
+x=7;
+x=9;
+x++;
+}
+
+
+
+main(){
+int z=3;
+func_1(z); //copies z address and passes it into function as parameter address
+
+char* str = nullptr;
+
+
+}
+
+|___________|
+|___________|
+|___________|
+|___________|
+|___________|
+|___________|
+|___________|
+|___________|
+|___________|
+|func_1|x=3;| when function closes and returns a value, its address entry on the stack is lost
+|main|z=3;__|
+
+	    1   2   3   4   5   6
+..........|'i'|'o'|'n'|'u'|'t'|\0|_|_|_|_|.....................
+
+sizeof string of chars needs to be size of characters + 1 additional for end of string.
+strlen = 5, +1 manually added.
+
+func_2(char* name){
+	name = new......
+	strcpy_s.....
+}
+
+in main:
+char* name = nullptr;
+name = new ...
+name = "ionut"
+func_2(name);
+
+stack:
+
+
+
+
+
+|func_2|name 0x77235508|< these get discarded if we use "new" in func_2
+|      |name 0x73521803|< 
+|main  |name 0x77235508|
+
+
+|func_2|name 0x77235508|< this will get returned if we do not use "new" in func_2
+|main  |name 0x77235508|
+		      |y+2
+................|12|16|22|................................
+		^  ^
+		|  y+1
+		y=0x77253274
+		size 3
+		
