@@ -1,0 +1,88 @@
+Memory:
+Stack + Heap
+
+Heap stocking: using keyword new (new = dynamic allocation) << used instead of malloc for C
+another function for memory allocation: calloc
+
+
+.................|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|.......
+					1 byte
+			^
+			|
+		address stored
+		into an int represented in hex code:
+		0XA3B71253 (2 chars from hex are 1 byte)
+
+malloc -> i need 100 bytes:
+
+				       |  <--100 bytes-->
+.................|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|.......
+				       ^
+				       |
+				malloc will return address of 
+				first byte that starts the assigned memory row
+
+calloc -> same as malloc but it will initiate all address locations allocated with 0
+
+
+when we define a value, we reserve a memory location from heap or stack:
+
+allocated to stack:
+
+int main(){
+int x=3;
+f1();
+}
+
+f1(){
+	int x=7;
+	int y=5;
+}
+
+
+int *x = nullptr; (or %nullptr but it is redundant.) < allocated to heap
+malloc/calloc	
+
+|____________|
+|____________|
+|____________|
+|____________|
+|____________|
+|____________|
+|____________|
+|____________|
+|x=7; y=5;___| >> once the f(1) call inside main is finished, the stack portion of the function (only) is cleared.
+|x=3_________|
+
+
+int *f2(){
+int*v_i = NULL;
+v_i = new int[110];
+v_i[0]=...
+v_i[1]=...
+.
+.
+.
+v_i[109]=...
+
+return v_i;
+}
+
+using pointers, we can use the stored values from the heap memory even after the function closes.
+*this stored heap memory can be deallocated or overwritten!
+
+
+		int x = 3;
+...|_|_|'c'|....|0|0|0|3|_|_|_|_|_|_|_|_|_|_|
+		ptr_x = &x=0x78352A3C
+       ^	ptr_x+1 -> 0x78352A40 //needs to 'jump' over the current value size (size can vary from type to type) to allocate new 			values
+       |
+PTR_C = &C = 0X742810AB
+
+ 
+
+
+
+
+
+
