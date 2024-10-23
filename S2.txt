@@ -1,0 +1,39 @@
+1 byte = 8 bits
+
+Variable types:
+-char - 1 byte
+-int - 4 bytes
+-float - 4 bytes
+-long - 8 bytes
+-double - 8 bytes
+
+-pointers on x86 > 4 bytes
+-pointers on x64 > 8 bytes
+
+
+
+
+
+
+
+
+
+
+*bool is an integer, not a type
+-bool   > int > 4 bytes (x86)
+	> int > 8 bytes (x64)
+
+breakpoints stops the execution BEFORE the line that it is pointing to.
+F10 to execute the line after the dot and move it down a line.
+Shift+11 go out of a function
+
+
+_getch(); >> keeps the terminal open
+get ch means get character, meaning it will wait for user input on keyboard before closing.
+
+
+
+Compiler errors:
+unresolved external symbol = program does not know what to do with the variable in the function aka invalid function
+
+
