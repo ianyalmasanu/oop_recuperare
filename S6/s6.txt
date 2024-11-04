@@ -1,0 +1,32 @@
+--ENUM can be defined both outside the class (global) or inside (only visible inside the class);
+defining globally can make possible using the values in multiple classes.
+
+enum BUDGET_TYPE {
+	TAX = 1,
+	BUDGET = 2
+};
+
+--deep copy for both constructor and setter:
+
+this->name = new char[strlen(name) + 1]; //allocate memory
+strcpy_s(this->name, strlen(name) + 1, name); //deep copy
+
+   >in setter:
+
+void setName(char* name) {
+	this->name = new char[strlen(name) + 1]; //allocate memory
+	strcpy_s(this->name, strlen(name) + 1, name); //deep copy
+}
+
+
+--for string variables, use directly this->stringName = stringName;
+
+--Copy Constructor:
+Student(const Student& copy) { //const is mandatory to prevent data modification inside the source class!
+	this->id = copy.id;
+	this->age = copy.age;
+	this->address = copy.address;
+	this->name = new char[strlen(copy.name) + 1]; //allocate memory
+	strcpy_s(this->name, strlen(copy.name) + 1, copy.name); //deep copy
+}
+
